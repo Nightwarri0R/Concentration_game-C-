@@ -12,6 +12,9 @@ namespace Concentration
 {
     public partial class MenuForm : Form
     {
+        public static int numOfPlayers;
+        public static string mode;
+
         public MenuForm()
         {
             InitializeComponent();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HighscoreForm));
             this.btnMenu = new System.Windows.Forms.Button();
             this.lHighscores = new System.Windows.Forms.Label();
             this.tLPScores = new System.Windows.Forms.TableLayoutPanel();
@@ -59,7 +60,7 @@
             this.tLPScores.ColumnCount = 3;
             this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.72881F));
             this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.27119F));
-            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tLPScores.Location = new System.Drawing.Point(24, 105);
             this.tLPScores.Name = "tLPScores";
             this.tLPScores.RowCount = 2;
@@ -92,6 +93,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(506, 397);
             this.Controls.Add(this.btnHard);
             this.Controls.Add(this.btnEasy);
