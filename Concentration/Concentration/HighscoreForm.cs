@@ -16,5 +16,27 @@ namespace Concentration
         {
             InitializeComponent();
         }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            MenuForm menuform = new MenuForm();
+            Form.ActiveForm.Close();
+            menuform.Show();
+        }
+
+        private void btnEasy_Click(object sender, EventArgs e)
+        {
+            displayScores("easy");
+        }
+
+        private void btnHard_Click(object sender, EventArgs e)
+        {
+            displayScores("hard");
+        }
+
+        private void displayScores(string mode)
+        {
+
+        }
     }
 }
