@@ -1,0 +1,12 @@
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\bin\Debug\Concentration.exe.config
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\bin\Debug\Concentration.exe
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\bin\Debug\Concentration.pdb
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.csprojAssemblyReference.cache
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.GameForm.resources
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.HighscoreForm.resources
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.MenuForm.resources
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.Properties.Resources.resources
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.csproj.GenerateResource.cache
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.csproj.CoreCompileInputs.cache
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.exe
+C:\Users\Nightwarri0R\Documents\GitHub\Concentration_game-C-\Concentration\Concentration\obj\Debug\Concentration.pdb

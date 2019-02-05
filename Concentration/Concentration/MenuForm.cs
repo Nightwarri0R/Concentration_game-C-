@@ -28,6 +28,8 @@ namespace Concentration
             this.Hide();
             HighscoreForm highscoreForm = new HighscoreForm();
             highscoreForm.Show();
+            btnScores.BackColor = Color.Turquoise;
+
         }
 
         private void btn1Player_Click(object sender, EventArgs e)
