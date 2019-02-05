@@ -46,6 +46,7 @@
             // 
             // menuStripOptions
             // 
+            this.menuStripOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stripItemRules,
             this.stripItemPause,
@@ -53,50 +54,53 @@
             this.stripItemExit});
             this.menuStripOptions.Location = new System.Drawing.Point(0, 0);
             this.menuStripOptions.Name = "menuStripOptions";
-            this.menuStripOptions.Size = new System.Drawing.Size(536, 24);
+            this.menuStripOptions.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStripOptions.Size = new System.Drawing.Size(715, 28);
             this.menuStripOptions.TabIndex = 0;
             this.menuStripOptions.Text = "Options";
             // 
             // stripItemRules
             // 
             this.stripItemRules.Name = "stripItemRules";
-            this.stripItemRules.Size = new System.Drawing.Size(79, 20);
+            this.stripItemRules.Size = new System.Drawing.Size(96, 24);
             this.stripItemRules.Text = "Show Rules";
             this.stripItemRules.Click += new System.EventHandler(this.stripItemRules_Click);
             // 
             // stripItemPause
             // 
             this.stripItemPause.Name = "stripItemPause";
-            this.stripItemPause.Size = new System.Drawing.Size(50, 20);
+            this.stripItemPause.Size = new System.Drawing.Size(58, 24);
             this.stripItemPause.Text = "Pause";
             this.stripItemPause.Click += new System.EventHandler(this.stripItemPause_Click);
             // 
             // stripItemResume
             // 
             this.stripItemResume.Name = "stripItemResume";
-            this.stripItemResume.Size = new System.Drawing.Size(61, 20);
+            this.stripItemResume.Size = new System.Drawing.Size(73, 24);
             this.stripItemResume.Text = "Resume";
             this.stripItemResume.Click += new System.EventHandler(this.stripItemResume_Click);
             // 
             // stripItemExit
             // 
             this.stripItemExit.Name = "stripItemExit";
-            this.stripItemExit.Size = new System.Drawing.Size(71, 20);
+            this.stripItemExit.Size = new System.Drawing.Size(88, 24);
             this.stripItemExit.Text = "Exit Game";
             this.stripItemExit.Click += new System.EventHandler(this.stripItemExit_Click);
             // 
             // fLPCards
             // 
-            this.fLPCards.Location = new System.Drawing.Point(51, 47);
+            this.fLPCards.Location = new System.Drawing.Point(68, 58);
+            this.fLPCards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fLPCards.Name = "fLPCards";
-            this.fLPCards.Size = new System.Drawing.Size(425, 188);
+            this.fLPCards.Size = new System.Drawing.Size(567, 231);
             this.fLPCards.TabIndex = 1;
             // 
             // pBarTimeLeft
             // 
-            this.pBarTimeLeft.Location = new System.Drawing.Point(51, 257);
+            this.pBarTimeLeft.Location = new System.Drawing.Point(68, 316);
+            this.pBarTimeLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pBarTimeLeft.Name = "pBarTimeLeft";
-            this.pBarTimeLeft.Size = new System.Drawing.Size(425, 23);
+            this.pBarTimeLeft.Size = new System.Drawing.Size(567, 28);
             this.pBarTimeLeft.TabIndex = 2;
             // 
             // timerTurn
@@ -105,24 +109,35 @@
             // 
             // splitConPlayers
             // 
-            this.splitConPlayers.Location = new System.Drawing.Point(51, 306);
+            this.splitConPlayers.Location = new System.Drawing.Point(68, 377);
+            this.splitConPlayers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitConPlayers.Name = "splitConPlayers";
-            this.splitConPlayers.Size = new System.Drawing.Size(425, 108);
-            this.splitConPlayers.SplitterDistance = 209;
+            // 
+            // splitConPlayers.Panel1
+            // 
+            this.splitConPlayers.Panel1.Font = new System.Drawing.Font("MS Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // splitConPlayers.Panel2
+            // 
+            this.splitConPlayers.Panel2.Font = new System.Drawing.Font("MS Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splitConPlayers.Size = new System.Drawing.Size(567, 133);
+            this.splitConPlayers.SplitterDistance = 278;
+            this.splitConPlayers.SplitterWidth = 5;
             this.splitConPlayers.TabIndex = 3;
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(536, 426);
+            this.ClientSize = new System.Drawing.Size(715, 524);
             this.Controls.Add(this.splitConPlayers);
             this.Controls.Add(this.pBarTimeLeft);
             this.Controls.Add(this.fLPCards);
             this.Controls.Add(this.menuStripOptions);
             this.MainMenuStrip = this.menuStripOptions;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GameForm";
             this.Text = "Concentration";
             this.menuStripOptions.ResumeLayout(false);
