@@ -34,10 +34,11 @@
             this.stripItemRules = new System.Windows.Forms.ToolStripMenuItem();
             this.stripItemPause = new System.Windows.Forms.ToolStripMenuItem();
             this.stripItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.fLPCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pBarTimeLeft = new System.Windows.Forms.ProgressBar();
             this.timerTurn = new System.Windows.Forms.Timer(this.components);
             this.splitConPlayers = new System.Windows.Forms.SplitContainer();
+            this.stripItemResume = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitConPlayers)).BeginInit();
             this.splitConPlayers.SuspendLayout();
@@ -48,6 +49,7 @@
             this.menuStripOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stripItemRules,
             this.stripItemPause,
+            this.stripItemResume,
             this.stripItemExit});
             this.menuStripOptions.Location = new System.Drawing.Point(0, 0);
             this.menuStripOptions.Name = "menuStripOptions";
@@ -60,25 +62,28 @@
             this.stripItemRules.Name = "stripItemRules";
             this.stripItemRules.Size = new System.Drawing.Size(79, 20);
             this.stripItemRules.Text = "Show Rules";
+            this.stripItemRules.Click += new System.EventHandler(this.stripItemRules_Click);
             // 
             // stripItemPause
             // 
             this.stripItemPause.Name = "stripItemPause";
             this.stripItemPause.Size = new System.Drawing.Size(50, 20);
             this.stripItemPause.Text = "Pause";
+            this.stripItemPause.Click += new System.EventHandler(this.stripItemPause_Click);
             // 
             // stripItemExit
             // 
             this.stripItemExit.Name = "stripItemExit";
             this.stripItemExit.Size = new System.Drawing.Size(71, 20);
             this.stripItemExit.Text = "Exit Game";
+            this.stripItemExit.Click += new System.EventHandler(this.stripItemExit_Click);
             // 
-            // flowLayoutPanel1
+            // fLPCards
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(51, 47);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(425, 188);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.fLPCards.Location = new System.Drawing.Point(51, 47);
+            this.fLPCards.Name = "fLPCards";
+            this.fLPCards.Size = new System.Drawing.Size(425, 188);
+            this.fLPCards.TabIndex = 1;
             // 
             // pBarTimeLeft
             // 
@@ -95,6 +100,13 @@
             this.splitConPlayers.SplitterDistance = 209;
             this.splitConPlayers.TabIndex = 3;
             // 
+            // stripItemResume
+            // 
+            this.stripItemResume.Name = "stripItemResume";
+            this.stripItemResume.Size = new System.Drawing.Size(61, 20);
+            this.stripItemResume.Text = "Resume";
+            this.stripItemResume.Click += new System.EventHandler(this.stripItemResume_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,7 +116,7 @@
             this.ClientSize = new System.Drawing.Size(536, 426);
             this.Controls.Add(this.splitConPlayers);
             this.Controls.Add(this.pBarTimeLeft);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.fLPCards);
             this.Controls.Add(this.menuStripOptions);
             this.MainMenuStrip = this.menuStripOptions;
             this.Name = "GameForm";
@@ -124,9 +136,10 @@
         private System.Windows.Forms.ToolStripMenuItem stripItemRules;
         private System.Windows.Forms.ToolStripMenuItem stripItemPause;
         private System.Windows.Forms.ToolStripMenuItem stripItemExit;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel fLPCards;
         private System.Windows.Forms.ProgressBar pBarTimeLeft;
         private System.Windows.Forms.Timer timerTurn;
         private System.Windows.Forms.SplitContainer splitConPlayers;
+        private System.Windows.Forms.ToolStripMenuItem stripItemResume;
     }
 }

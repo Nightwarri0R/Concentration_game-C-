@@ -60,7 +60,7 @@
             this.tLPScores.ColumnCount = 3;
             this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.72881F));
             this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.27119F));
-            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
+            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
             this.tLPScores.Location = new System.Drawing.Point(24, 105);
             this.tLPScores.Name = "tLPScores";
             this.tLPScores.RowCount = 2;
@@ -102,7 +102,7 @@
             this.Controls.Add(this.lHighscores);
             this.Controls.Add(this.btnMenu);
             this.Name = "HighscoreForm";
-            this.Text = "Highscores";
+            this.Text = "Concentration";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,9 +19,9 @@ namespace Concentration
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            MenuForm menuform = new MenuForm();
-            Form.ActiveForm.Close();
-            menuform.Show();
+            this.Close();
+            MenuForm menuForm = new MenuForm();
+            menuForm.Show();
         }
 
         private void btnEasy_Click(object sender, EventArgs e)

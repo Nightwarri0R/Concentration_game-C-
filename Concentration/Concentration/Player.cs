@@ -14,7 +14,8 @@ namespace Concentration
     {
 
         private string username;
-        private string password;
+        //private string password;
+        private int score;
         private List<int> scoresEasy;
         private List<int> scoresHard;
 
@@ -23,10 +24,15 @@ namespace Concentration
             get { return username; }
             set { username = value; }
         }
-        public string Password
+        /*public string Password
         {
             get { return password; }
             set { password = value; }
+        }*/
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
         }
         public List<int> ScoresEasy
         {
@@ -39,12 +45,13 @@ namespace Concentration
             set { scoresHard = value; }
         }
 
-        public Player(string username, string password)
+        public Player(string username)
         {
             this.username = username;
-            this.password = password;
-            scoresEasy = new List<int> { 0, 0 };
-            scoresHard = new List<int> { 0, 0 };
+            //this.password = password;
+            score = 0;
+            scoresEasy = new List<int>();
+            scoresHard = new List<int>();
         }
 
         //need to test/change code below
@@ -70,7 +77,7 @@ namespace Concentration
         {
             Stream sr;
             BinaryFormatter bf = new BinaryFormatter();
-            List<Player> users = new List<Player>();
+            List<Player> players = new List<Player>();
             try
             {
                 sr = File.OpenRead("PlayerDetails.bin");
@@ -78,7 +85,7 @@ namespace Concentration
                 {
                     while (sr.Position < sr.Length)
                     {
-                        users.Add((Player)bf.Deserialize(sr));
+                        players.Add((Player)bf.Deserialize(sr));
                     }
                 }
                 catch (SerializationException e)
@@ -92,7 +99,7 @@ namespace Concentration
             {
                 System.Windows.Forms.MessageBox.Show("" + e.Message);
             }
-            return users;
+            return players;
         }
 
         public static bool UpdateUser(Player player)
@@ -104,7 +111,7 @@ namespace Concentration
             Stream sr;
             try
             {
-                sr = File.Open("UserDetails.bin", FileMode.Open, FileAccess.ReadWrite);
+                sr = File.Open("PlayerDetails.bin", FileMode.Open, FileAccess.ReadWrite);
                 BinaryFormatter bf = new BinaryFormatter();
                 try
                 {
@@ -124,7 +131,8 @@ namespace Concentration
                         {
                             found = true;
                             // updates scores below//
-                            readPlayer.Scores = player.Scores;
+                            readPlayer.ScoresEasy = player.ScoresEasy;
+                            readPlayer.ScoresHard = player.ScoresHard;
                             sr.Seek(pos, SeekOrigin.Begin);
                             bf.Serialize(sr, readPlayer);
                         }
