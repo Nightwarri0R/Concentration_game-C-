@@ -38,11 +38,9 @@
             // 
             // btnMenu
             // 
-            this.btnMenu.Font = new System.Drawing.Font("MS Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenu.Location = new System.Drawing.Point(511, 432);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMenu.Location = new System.Drawing.Point(383, 351);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(136, 42);
+            this.btnMenu.Size = new System.Drawing.Size(102, 34);
             this.btnMenu.TabIndex = 0;
             this.btnMenu.Text = "Back to Menu";
             this.btnMenu.UseVisualStyleBackColor = true;
@@ -51,13 +49,9 @@
             // lHighscores
             // 
             this.lHighscores.AutoSize = true;
-            this.lHighscores.BackColor = System.Drawing.Color.Transparent;
-            this.lHighscores.Font = new System.Drawing.Font("MS Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lHighscores.ForeColor = System.Drawing.Color.YellowGreen;
-            this.lHighscores.Location = new System.Drawing.Point(293, 85);
-            this.lHighscores.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lHighscores.Location = new System.Drawing.Point(220, 69);
             this.lHighscores.Name = "lHighscores";
-            this.lHighscores.Size = new System.Drawing.Size(140, 24);
+            this.lHighscores.Size = new System.Drawing.Size(60, 13);
             this.lHighscores.TabIndex = 1;
             this.lHighscores.Text = "Highscores";
             // 
@@ -66,23 +60,20 @@
             this.tLPScores.ColumnCount = 3;
             this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.72881F));
             this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.27119F));
-            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
-            this.tLPScores.Location = new System.Drawing.Point(32, 129);
-            this.tLPScores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
+            this.tLPScores.Location = new System.Drawing.Point(24, 105);
             this.tLPScores.Name = "tLPScores";
             this.tLPScores.RowCount = 2;
             this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tLPScores.Size = new System.Drawing.Size(615, 266);
+            this.tLPScores.Size = new System.Drawing.Size(461, 216);
             this.tLPScores.TabIndex = 2;
             // 
             // btnEasy
             // 
-            this.btnEasy.Font = new System.Drawing.Font("MS Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEasy.Location = new System.Drawing.Point(65, 37);
-            this.btnEasy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEasy.Location = new System.Drawing.Point(49, 30);
             this.btnEasy.Name = "btnEasy";
-            this.btnEasy.Size = new System.Drawing.Size(100, 28);
+            this.btnEasy.Size = new System.Drawing.Size(75, 23);
             this.btnEasy.TabIndex = 3;
             this.btnEasy.Text = "Easy Mode";
             this.btnEasy.UseVisualStyleBackColor = true;
@@ -90,11 +81,9 @@
             // 
             // btnHard
             // 
-            this.btnHard.Font = new System.Drawing.Font("MS Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHard.Location = new System.Drawing.Point(445, 39);
-            this.btnHard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHard.Location = new System.Drawing.Point(335, 30);
             this.btnHard.Name = "btnHard";
-            this.btnHard.Size = new System.Drawing.Size(100, 28);
+            this.btnHard.Size = new System.Drawing.Size(75, 23);
             this.btnHard.TabIndex = 4;
             this.btnHard.Text = "Hard Mode";
             this.btnHard.UseVisualStyleBackColor = true;
@@ -102,17 +91,16 @@
             // 
             // HighscoreForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(675, 489);
+            this.ClientSize = new System.Drawing.Size(506, 397);
             this.Controls.Add(this.btnHard);
             this.Controls.Add(this.btnEasy);
             this.Controls.Add(this.tLPScores);
             this.Controls.Add(this.lHighscores);
             this.Controls.Add(this.btnMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HighscoreForm";
             this.Text = "Concentration";
             this.ResumeLayout(false);
