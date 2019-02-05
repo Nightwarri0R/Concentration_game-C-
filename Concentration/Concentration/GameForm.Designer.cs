@@ -33,12 +33,12 @@
             this.menuStripOptions = new System.Windows.Forms.MenuStrip();
             this.stripItemRules = new System.Windows.Forms.ToolStripMenuItem();
             this.stripItemPause = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripItemResume = new System.Windows.Forms.ToolStripMenuItem();
             this.stripItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.fLPCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pBarTimeLeft = new System.Windows.Forms.ProgressBar();
             this.timerTurn = new System.Windows.Forms.Timer(this.components);
             this.splitConPlayers = new System.Windows.Forms.SplitContainer();
-            this.stripItemResume = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitConPlayers)).BeginInit();
             this.splitConPlayers.SuspendLayout();
@@ -71,6 +71,13 @@
             this.stripItemPause.Text = "Pause";
             this.stripItemPause.Click += new System.EventHandler(this.stripItemPause_Click);
             // 
+            // stripItemResume
+            // 
+            this.stripItemResume.Name = "stripItemResume";
+            this.stripItemResume.Size = new System.Drawing.Size(61, 20);
+            this.stripItemResume.Text = "Resume";
+            this.stripItemResume.Click += new System.EventHandler(this.stripItemResume_Click);
+            // 
             // stripItemExit
             // 
             this.stripItemExit.Name = "stripItemExit";
@@ -92,6 +99,10 @@
             this.pBarTimeLeft.Size = new System.Drawing.Size(425, 23);
             this.pBarTimeLeft.TabIndex = 2;
             // 
+            // timerTurn
+            // 
+            this.timerTurn.Tick += new System.EventHandler(this.timerTurn_Tick);
+            // 
             // splitConPlayers
             // 
             this.splitConPlayers.Location = new System.Drawing.Point(51, 306);
@@ -99,13 +110,6 @@
             this.splitConPlayers.Size = new System.Drawing.Size(425, 108);
             this.splitConPlayers.SplitterDistance = 209;
             this.splitConPlayers.TabIndex = 3;
-            // 
-            // stripItemResume
-            // 
-            this.stripItemResume.Name = "stripItemResume";
-            this.stripItemResume.Size = new System.Drawing.Size(61, 20);
-            this.stripItemResume.Text = "Resume";
-            this.stripItemResume.Click += new System.EventHandler(this.stripItemResume_Click);
             // 
             // GameForm
             // 

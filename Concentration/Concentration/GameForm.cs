@@ -18,7 +18,12 @@ namespace Concentration
         Player player1;
         Player player2;
 
-        public GameForm()
+        public GameForm(string username1)
+        {
+            InitializeComponent();
+        }
+
+        public GameForm(string username1, string username2)
         {
             InitializeComponent();
         }
@@ -59,6 +64,11 @@ namespace Concentration
         {
             MessageBox.Show("Resuming Game");
             timerTurn.Start();
+        }
+
+        private void timerTurn_Tick(object sender, EventArgs e)
+        {
+
         }
 
         /*progressBar1.Value = timeLeft;

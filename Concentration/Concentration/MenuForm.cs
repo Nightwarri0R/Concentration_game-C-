@@ -63,9 +63,9 @@ namespace Concentration
         private void btnStartGame_Click(object sender, EventArgs e)
         {
             //?
-            //create / load players & set usernames?
+            //validate usernames & then call appropiate GameForm constructor
             this.Hide();
-            GameForm gameForm = new GameForm();
+            GameForm gameForm = new GameForm("test");   //need to test else use static?
             gameForm.Show();
         }
 

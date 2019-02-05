@@ -127,6 +127,7 @@ namespace Concentration
                         {
                             comparison = readPlayer.Username.CompareTo(player.Username);
                         }
+
                         if (comparison == 0)
                         {
                             found = true;
