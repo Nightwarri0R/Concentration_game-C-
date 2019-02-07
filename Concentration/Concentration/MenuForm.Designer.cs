@@ -42,6 +42,7 @@
             this.lPlayer2 = new System.Windows.Forms.Label();
             this.lPlayer1 = new System.Windows.Forms.Label();
             this.lEnterName = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panelPlayer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,6 +170,16 @@
             this.lEnterName.TabIndex = 0;
             this.lEnterName.Text = "Please enter your name:";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(502, 405);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "Exit Game";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +187,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(604, 453);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panelPlayer);
             this.Controls.Add(this.btnHard);
             this.Controls.Add(this.btnEasy);
@@ -207,6 +219,7 @@
         private System.Windows.Forms.Label lPlayer2;
         private System.Windows.Forms.Label lPlayer1;
         private System.Windows.Forms.Label lEnterName;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

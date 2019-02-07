@@ -13,29 +13,35 @@ namespace Concentration
     public partial class GameForm : Form
     {
 
-        private List<Button> btnCards;
-        private ImageList cardImages;
-        private int timeLeft = 100;
+        private List<Button> btnCards; //either 18 or 36
+        private ImageList allImages; //either 10 or 19
+        private List<ImageList> cardImages; //either 9 or 18
+        private int timeLeft;
+        private int turn;
         private Player player1;
         private Player player2;
         private List<Button> clicked;
 
-        public GameForm(string username1)
+        public GameForm(int numOfPlayers, string mode, string username1)
         {
             InitializeComponent();
             btnCards = new List<Button>();
-            cardImages = new ImageList();
+            allImages = new ImageList();
+            cardImages = new List<ImageList>();
             clicked = new List<Button>();
-            addImages();
-            makeGame(MenuForm.numOfPlayers, MenuForm.mode);
+            timeLeft = 100;
+            turn = 1;
+            addImages(mode);
+            makeGame(numOfPlayers, mode);
         }
 
-        public GameForm(string username1, string username2)
+        //need to update later so same as above
+        public GameForm(int numOfPlayers, string mode, string username1, string username2)
         {
             InitializeComponent();
-            cardImages = new ImageList();
-            addImages();
-            makeGame(MenuForm.numOfPlayers, MenuForm.mode);
+            allImages = new ImageList();
+            addImages(mode);
+            makeGame(numOfPlayers, mode);
         }
 
         //need to change logic of when etc
@@ -44,8 +50,22 @@ namespace Concentration
             if(clicked.Count() == 2)
             {
                 //check if correct
+                if(clicked[0].ImageKey == clicked[1].ImageKey) //need to test
+                {
+                    //increase score
+                    //leave them image up
+                }
+                else
+                {
+                    //change turn
+
+                    //hide images again
+                    clicked[0].ImageIndex = 0;
+                    clicked[1].ImageIndex = 0;
+                }
+                clicked.Clear();
             }
-            else if(clicked.Count() > 2)
+            else if(clicked.Count() > 2)//???
             {
 
             }
@@ -56,14 +76,38 @@ namespace Concentration
             //else remove both from list & turn around & next player
         }
 
-        private void addImages()
+        private void addImages(string mode)
         {
             //cardImages.Images.Add("card", Image.FromFile());
+            
             //add all images to imagelist
             //0 will be background which all cards will be set to
-            //random index to select which but how to keep the same for duration of game?
+            
+            //add the number of images for easy mode which is 9
+            if(mode == "hard")
+            {
+                //add rest of images ie 9 more
 
+                for (int i = 1; i < 19; i++)
+                {
+                    cardImages.Add(new ImageList());
+                    cardImages[i].Images.Add(allImages.Images["card"]);
+                    cardImages[i].Images.Add(allImages.Images[i]);
+                }
+            }
+            else
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    cardImages.Add(new ImageList());
+                    cardImages[i].Images.Add(allImages.Images["card"]);
+                    cardImages[i].Images.Add(allImages.Images[i]);
+                }
+            }
+
+            
         }
+
 
         private void makeGame(int players, string mode)
         {
@@ -72,20 +116,27 @@ namespace Concentration
                 for(int i = 0; i < 18; i++)
                 {
                     btnCards.Add(new Button());
-                    btnCards[i].ImageList = cardImages;
-                    btnCards[i].ImageIndex = 0;
+                    //ie the num of imageLists
+                    if(i<9) //???
+                    {
+                        btnCards[i].ImageList = cardImages[i];
+                        btnCards[i].ImageIndex = 0;
+                    }
+                    //btnCards[i].ImageList = cardImages[i];
+                    //btnCards[i].ImageIndex = 0;
                     //btnCards[i]
                     //set size etc?
                     btnCards[i].Click += new EventHandler(this.btnEvent_Click);
                     fLPCards.Controls.Add(btnCards[i]);
                 }
+                //foreach()
             }
             else
             {
-                for (int i = 0; i < 36; i++)
+                for (int i = 0; i < 36; i++) //needs to be same as above except 36
                 {
                     btnCards.Add(new Button());
-                    btnCards[i].ImageList = cardImages;
+                    btnCards[i].ImageList = cardImages[i];
                     btnCards[i].ImageIndex = 0;
                     //btnCards[i]
                     //set size etc?

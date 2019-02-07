@@ -12,8 +12,8 @@ namespace Concentration
 {
     public partial class MenuForm : Form
     {
-        public static int numOfPlayers;
-        public static string mode;
+        private int numOfPlayers;
+        private string mode;
 
         public MenuForm()
         {
@@ -65,9 +65,13 @@ namespace Concentration
             //?
             //validate usernames & then call appropiate GameForm constructor
             this.Hide();
-            GameForm gameForm = new GameForm("test");   //need to test else use static?
+            GameForm gameForm = new GameForm(numOfPlayers, mode, "test");   //need to test else use static?
             gameForm.Show();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
