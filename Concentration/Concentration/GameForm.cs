@@ -42,7 +42,13 @@ namespace Concentration
         public GameForm(int numOfPlayers, string mode, string username1, string username2)
         {
             InitializeComponent();
+            btnCards = new List<Button>();
             allImages = new ImageList();
+            cardImages = new List<ImageList>();
+            clicked = new List<Button>();
+            timeLeft = 100;
+            turn = 1;
+            pairsFound = 0;
             addImages(mode);
             makeGame(numOfPlayers, mode);
             setPlayer(username1, username2);
@@ -62,11 +68,11 @@ namespace Concentration
                     //increase score
                     if(turn == 1)
                     {
-                        //player1.Score +=
+                        player1.Score += 10;
                     }
                     else
                     {
-                        //player2.Score+=
+                        player2.Score += 10;
                     }
                     MessageBox.Show("A pair was found!", "Pair Found");
                     pairsFound += 1;
@@ -112,7 +118,7 @@ namespace Concentration
             if(!found)
             {
                 player1 = new Player(username);
-                Player.AppendNewPlayer(player1);
+                //Player.AppendNewPlayer(player1);
             }
         }
 
@@ -139,12 +145,12 @@ namespace Concentration
             if (!found1)
             {
                 player1 = new Player(username1);
-                Player.AppendNewPlayer(player1);
+                //Player.AppendNewPlayer(player1);
             }
             if (!found2)
             {
                 player2 = new Player(username2);
-                Player.AppendNewPlayer(player2);
+                //Player.AppendNewPlayer(player2);
             }
         }
 
@@ -281,8 +287,14 @@ namespace Concentration
                     player2.Score = 0;
                 }
             }
-            Player.UpdatePlayer(player1);
-            Player.UpdatePlayer(player2);
+            if(!Player.UpdatePlayer(player1))   //if not found then add
+            {
+                Player.AppendNewPlayer(player1);
+            }
+            if(!Player.UpdatePlayer(player2))
+            {
+                Player.AppendNewPlayer(player2);
+            }
 
             this.Close();
             HighscoreForm highscoreForm = new HighscoreForm();
