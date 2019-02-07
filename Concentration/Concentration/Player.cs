@@ -14,7 +14,6 @@ namespace Concentration
     {
 
         private string username;
-        //private string password;
         private int score;
         private List<int> scoresEasy;
         private List<int> scoresHard;
@@ -24,11 +23,6 @@ namespace Concentration
             get { return username; }
             set { username = value; }
         }
-        /*public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }*/
         public int Score
         {
             get { return score; }
@@ -48,7 +42,6 @@ namespace Concentration
         public Player(string username)
         {
             this.username = username;
-            //this.password = password;
             score = 0;
             scoresEasy = new List<int>();
             scoresHard = new List<int>();

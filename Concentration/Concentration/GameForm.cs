@@ -33,6 +33,7 @@ namespace Concentration
             turn = 1;
             addImages(mode);
             makeGame(numOfPlayers, mode);
+            setPlayer(username1);
         }
 
         //need to update later so same as above
@@ -42,38 +43,98 @@ namespace Concentration
             allImages = new ImageList();
             addImages(mode);
             makeGame(numOfPlayers, mode);
+            setPlayer(username1, username2);
         }
 
         //need to change logic of when etc
         void btnEvent_Click(object sender, EventArgs e)
         {
-            if(clicked.Count() == 2)
+            clicked.Add((Button)sender);
+
+            if (clicked.Count() == 2)
             {
-                //check if correct
+                //check if a pair
                 if(clicked[0].ImageKey == clicked[1].ImageKey) //need to test
                 {
                     //increase score
+                    if(turn == 1)
+                    {
+                        //player1.Score +=
+                    }
+                    else
+                    {
+                        //player2.Score+=
+                    }
+                    MessageBox.Show("You found a pair!");
                     //leave them image up
                 }
                 else
                 {
-                    //change turn
-
+                    //change turn, might need to mbox or otherwise indicate?
+                    if (turn == 1)
+                    {
+                        turn = 2;
+                    }
+                    else
+                    {
+                        turn = 1;
+                    }
                     //hide images again
                     clicked[0].ImageIndex = 0;
                     clicked[1].ImageIndex = 0;
                 }
                 clicked.Clear();
             }
-            else if(clicked.Count() > 2)//???
-            {
+            
+        }
 
+        private void setPlayer(string username)
+        {
+            List<Player> allPlayers = Player.ReadFromFile();
+            bool found = false;
+            foreach(Player player in allPlayers)
+            {
+                if(player.Username == username)
+                {
+                    found = true;
+                    player1 = player;
+                    break;
+                }
             }
-            clicked.Add((Button)sender);
-            //when clicked add button to clicked list
-            //when appropiate check if correct
-            //if correct then act & allow another turn
-            //else remove both from list & turn around & next player
+            if(!found)
+            {
+                player1 = new Player(username);
+            }
+        }
+
+        private void setPlayer(string username1, string username2)
+        {
+            List<Player> allPlayers = Player.ReadFromFile();
+            bool found1 = false;
+            bool found2 = false;
+            foreach (Player player in allPlayers)
+            {
+                if (player.Username == username1)
+                {
+                    found1 = true;
+                    player1 = player;
+                }
+                else if(player.Username == username2)
+                {
+                    found2 = true;
+                    player2 = player;
+                }
+                if (found1 && found2)
+                    break;
+            }
+            if (!found1)
+            {
+                player1 = new Player(username1);
+            }
+            if (!found2)
+            {
+                player2 = new Player(username2);
+            }
         }
 
         private void addImages(string mode)
@@ -108,6 +169,26 @@ namespace Concentration
             
         }
 
+        private void addImagesToBtns()
+        {
+            Random random = new Random();
+            List<int> indexsUsed = new List<int>();
+            int num1, num2;
+            foreach (ImageList i in cardImages)
+            {
+                do
+                {
+                    num1 = random.Next(1, btnCards.Count);
+                    num2 = random.Next(1, btnCards.Count);
+                }
+                while (num1 == num2 || indexsUsed.Contains(num1) || indexsUsed.Contains(num2)); //need to test won't infinite
+
+                btnCards[num1].ImageList = i;
+                btnCards[num2].ImageList = i;
+                indexsUsed.Add(num1);
+                indexsUsed.Add(num2);
+            }
+        }
 
         private void makeGame(int players, string mode)
         {
@@ -116,34 +197,25 @@ namespace Concentration
                 for(int i = 0; i < 18; i++)
                 {
                     btnCards.Add(new Button());
-                    //ie the num of imageLists
-                    if(i<9) //???
-                    {
-                        btnCards[i].ImageList = cardImages[i];
-                        btnCards[i].ImageIndex = 0;
-                    }
-                    //btnCards[i].ImageList = cardImages[i];
-                    //btnCards[i].ImageIndex = 0;
                     //btnCards[i]
                     //set size etc?
                     btnCards[i].Click += new EventHandler(this.btnEvent_Click);
                     fLPCards.Controls.Add(btnCards[i]);
                 }
-                //foreach()
+                
             }
             else
             {
                 for (int i = 0; i < 36; i++) //needs to be same as above except 36
                 {
                     btnCards.Add(new Button());
-                    btnCards[i].ImageList = cardImages[i];
-                    btnCards[i].ImageIndex = 0;
                     //btnCards[i]
                     //set size etc?
                     btnCards[i].Click += new EventHandler(this.btnEvent_Click);
                     fLPCards.Controls.Add(btnCards[i]);
                 }
             }
+            addImagesToBtns();
         }
 
         private void stripItemExit_Click(object sender, EventArgs e)
