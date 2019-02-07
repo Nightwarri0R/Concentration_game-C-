@@ -36,7 +36,7 @@ namespace Concentration
 
         private void displayScores(string mode)
         {
-
+            //Label[,] scoreboard = 
         }
     }
 }

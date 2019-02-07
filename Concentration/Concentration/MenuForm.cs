@@ -62,16 +62,46 @@ namespace Concentration
 
         private void btnStartGame_Click(object sender, EventArgs e)
         {
-            //?
-            //validate usernames & then call appropiate GameForm constructor
-            this.Hide();
-            GameForm gameForm = new GameForm(numOfPlayers, mode, "test");   //need to test else use static?
-            gameForm.Show();
+            if(validUsernames())
+            {
+                this.Hide();
+                if (numOfPlayers == 1)
+                {
+                    GameForm gameForm = new GameForm(numOfPlayers, mode, txtName1.Text);
+                    gameForm.Show();
+                }
+                else
+                {
+                    GameForm gameForm = new GameForm(numOfPlayers, mode, txtName1.Text, txtName2.Text);
+                    gameForm.Show();
+                }
+            }   
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private bool validUsernames()
+        {
+            bool valid = true;
+            if(txtName1.Text == "")
+            {
+                valid = false;
+            }
+            if(numOfPlayers == 2)
+            {
+                if(txtName2.Text == "")
+                {
+                    valid = false;
+                }
+                if(txtName1.Text == txtName2.Text)
+                {
+                    valid = false;
+                }
+            }
+            return valid;
         }
     }
 }

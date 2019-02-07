@@ -58,15 +58,18 @@
             // tLPScores
             // 
             this.tLPScores.ColumnCount = 3;
-            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.72881F));
-            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.27119F));
-            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.tLPScores.Location = new System.Drawing.Point(24, 105);
+            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tLPScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tLPScores.Location = new System.Drawing.Point(28, 105);
             this.tLPScores.Name = "tLPScores";
-            this.tLPScores.RowCount = 2;
-            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tLPScores.Size = new System.Drawing.Size(461, 216);
+            this.tLPScores.RowCount = 5;
+            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tLPScores.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tLPScores.Size = new System.Drawing.Size(457, 227);
             this.tLPScores.TabIndex = 2;
             // 
             // btnEasy
