@@ -97,6 +97,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Bear.jpg" />
+    <EmbeddedResource Include="Properties\Bunny.jpg" />
+    <EmbeddedResource Include="Properties\Crocodile.jpg" />
+    <EmbeddedResource Include="Properties\Dinosaur.jpg" />
+    <EmbeddedResource Include="Properties\Dog.jpg" />
+    <EmbeddedResource Include="Properties\Dragon.jpg" />
+    <EmbeddedResource Include="Properties\Elephant.jpg" />
+    <EmbeddedResource Include="Properties\Fish.jpg" />
+    <EmbeddedResource Include="Properties\Bird.jpg" />
+    <EmbeddedResource Include="Properties\Horse.jpg" />
+    <EmbeddedResource Include="Properties\Kitty.jpg" />
+    <EmbeddedResource Include="Properties\Moose.jpg" />
+    <EmbeddedResource Include="Properties\Card.jpg" />
+    <EmbeddedResource Include="Properties\Pig.jpg" />
+    <EmbeddedResource Include="Properties\Sheep.jpg" />
+    <EmbeddedResource Include="Properties\Snake.jpg" />
+    <EmbeddedResource Include="Properties\Spider.jpg" />
+    <EmbeddedResource Include="Properties\Tiger.jpg" />
+    <EmbeddedResource Include="Properties\Zebra.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

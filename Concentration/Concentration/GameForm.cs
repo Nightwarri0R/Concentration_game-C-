@@ -21,6 +21,7 @@ namespace Concentration
         private Player player1;
         private Player player2;
         private List<Button> clicked;
+        private int pairsFound;
 
         public GameForm(int numOfPlayers, string mode, string username1)
         {
@@ -31,6 +32,7 @@ namespace Concentration
             clicked = new List<Button>();
             timeLeft = 100;
             turn = 1;
+            pairsFound = 0;
             addImages(mode);
             makeGame(numOfPlayers, mode);
             setPlayer(username1);
@@ -50,6 +52,7 @@ namespace Concentration
         void btnEvent_Click(object sender, EventArgs e)
         {
             clicked.Add((Button)sender);
+            clicked[clicked.Count() - 1].ImageIndex = 1;
 
             if (clicked.Count() == 2)
             {
@@ -65,8 +68,13 @@ namespace Concentration
                     {
                         //player2.Score+=
                     }
-                    MessageBox.Show("You found a pair!");
-                    //leave them image up
+                    MessageBox.Show("A pair was found!", "Pair Found");
+                    pairsFound += 1;
+                    if(pairsFound == cardImages.Count)
+                    {
+                        endOfGame();
+                    }
+
                 }
                 else
                 {
@@ -104,6 +112,7 @@ namespace Concentration
             if(!found)
             {
                 player1 = new Player(username);
+                Player.AppendNewPlayer(player1);
             }
         }
 
@@ -130,24 +139,42 @@ namespace Concentration
             if (!found1)
             {
                 player1 = new Player(username1);
+                Player.AppendNewPlayer(player1);
             }
             if (!found2)
             {
                 player2 = new Player(username2);
+                Player.AppendNewPlayer(player2);
             }
         }
 
-        private void addImages(string mode)
+        private void addImages(string mode) //need to test that card is 0
         {
-            //cardImages.Images.Add("card", Image.FromFile());
-            
+            allImages.Images.Add("Card", (Image)Properties.Resources.ResourceManager.GetObject("Card.jpg"));
+            allImages.Images.Add("Bear", (Image)Properties.Resources.ResourceManager.GetObject("Bear.jpg"));
+            allImages.Images.Add("Bird", (Image)Properties.Resources.ResourceManager.GetObject("Bird.jpg"));
+            allImages.Images.Add("Bunny", (Image)Properties.Resources.ResourceManager.GetObject("Bunny.jpg"));
+            allImages.Images.Add("Crocodile", (Image)Properties.Resources.ResourceManager.GetObject("Crocodile.jpg"));
+            allImages.Images.Add("Dinosaur", (Image)Properties.Resources.ResourceManager.GetObject("Dinosaur.jpg"));
+            allImages.Images.Add("Dog", (Image)Properties.Resources.ResourceManager.GetObject("Dog.jpg"));
+            allImages.Images.Add("Dragon", (Image)Properties.Resources.ResourceManager.GetObject("Dragon.jpg"));
+            allImages.Images.Add("Elephant", (Image)Properties.Resources.ResourceManager.GetObject("Elephant.jpg"));
+            allImages.Images.Add("Fish", (Image)Properties.Resources.ResourceManager.GetObject("Fish.jpg"));
             //add all images to imagelist
             //0 will be background which all cards will be set to
             
-            //add the number of images for easy mode which is 9
-            if(mode == "hard")
+            if (mode == "hard")
             {
                 //add rest of images ie 9 more
+                allImages.Images.Add("Horse", (Image)Properties.Resources.ResourceManager.GetObject("Horse.jpg"));
+                allImages.Images.Add("Kitty", (Image)Properties.Resources.ResourceManager.GetObject("Kitty.jpg"));
+                allImages.Images.Add("Moose", (Image)Properties.Resources.ResourceManager.GetObject("Moose.jpg"));
+                allImages.Images.Add("Pig", (Image)Properties.Resources.ResourceManager.GetObject("Pig.jpg"));
+                allImages.Images.Add("Sheep", (Image)Properties.Resources.ResourceManager.GetObject("Sheep.jpg"));
+                allImages.Images.Add("Snake", (Image)Properties.Resources.ResourceManager.GetObject("Snake.jpg"));
+                allImages.Images.Add("Spider", (Image)Properties.Resources.ResourceManager.GetObject("Spider.jpg"));
+                allImages.Images.Add("Tiger", (Image)Properties.Resources.ResourceManager.GetObject("Tiger.jpg"));
+                allImages.Images.Add("Zebra", (Image)Properties.Resources.ResourceManager.GetObject("Zebra.jpg"));
 
                 for (int i = 1; i < 19; i++)
                 {
@@ -206,7 +233,7 @@ namespace Concentration
             }
             else
             {
-                for (int i = 0; i < 36; i++) //needs to be same as above except 36
+                for (int i = 0; i < 36; i++)
                 {
                     btnCards.Add(new Button());
                     //btnCards[i]
@@ -216,6 +243,50 @@ namespace Concentration
                 }
             }
             addImagesToBtns();
+        }
+
+        private void endOfGame()
+        {
+            if(player1.Score == player2.Score)
+            {
+                MessageBox.Show("It's a draw!","All Pairs Found");
+            }
+            else if (player1.Score > player2.Score)
+            {
+                MessageBox.Show(player1.Username + " wins!", "All Pairs Found");
+            }
+            else
+            {
+                MessageBox.Show(player2.Username + " wins!", "All Pairs Found");
+            }
+
+            //Update the players' scores
+            if(cardImages.Count() == 9) //i.e. if playing in easy mode
+            {
+                player1.ScoresEasy.Add(player1.Score);
+                player1.Score = 0;
+                if(player2.Username != "CPU")
+                {
+                    player2.ScoresEasy.Add(player2.Score);
+                    player2.Score = 0;
+                }
+            }
+            else    //i.e. if playing in hard mode
+            {
+                player1.ScoresHard.Add(player1.Score);
+                player1.Score = 0;
+                if (player2.Username != "CPU")
+                {
+                    player2.ScoresHard.Add(player2.Score);
+                    player2.Score = 0;
+                }
+            }
+            Player.UpdatePlayer(player1);
+            Player.UpdatePlayer(player2);
+
+            this.Close();
+            HighscoreForm highscoreForm = new HighscoreForm();
+            highscoreForm.Show();
         }
 
         private void stripItemExit_Click(object sender, EventArgs e)

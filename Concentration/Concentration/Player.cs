@@ -95,7 +95,7 @@ namespace Concentration
             return players;
         }
 
-        public static bool UpdateUser(Player player)
+        public static bool UpdatePlayer(Player player)
         {
             long pos = -1;
             bool found = false;
