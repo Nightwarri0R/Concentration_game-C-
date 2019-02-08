@@ -36,8 +36,27 @@ namespace Concentration
 
         private void displayScores(string mode)
         {
-            //Label[,] scoreboard = 
-            MessageBox.Show("Test");
+            Label[,] lScoreboard = { { lName1, lScore1 }, { lName2, lScore2 }, { lName3, lScore3 }, { lName4, lScore4 }, { lName5, lScore5 } };
+            List<Player> allPlayers = Player.ReadFromFile();
+
+            if (mode == "easy")
+            {
+                List<Player> sortedEasy = allPlayers.OrderByDescending(player => player.ScoresEasy[0]).ToList();
+                for (int i = 0; i < 5; i++)
+                {
+                    lScoreboard[i, 0].Text = sortedEasy[i].Username;
+                    lScoreboard[i, 1].Text = sortedEasy[i].ScoresEasy[0].ToString();
+                }
+            }
+            else
+            {
+                List<Player> sortedHard = allPlayers.OrderByDescending(player => player.ScoresHard[0]).ToList();
+                for (int i = 0; i < 5; i++)
+                {
+                    lScoreboard[i, 0].Text = sortedHard[i].Username;
+                    lScoreboard[i, 1].Text = sortedHard[i].ScoresHard[0].ToString();
+                }
+            }
         }
     }
 }

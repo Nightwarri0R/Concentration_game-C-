@@ -14,7 +14,6 @@ namespace Concentration
     {
 
         private List<Button> btnCards; //either 18 or 36
-        //private ImageList allImages; //either 10 or 19
         private List<ImageList> cardImages; //either 9 or 18
         private int timeLeft;
         private int turn;
@@ -27,7 +26,6 @@ namespace Concentration
         {
             InitializeComponent();
             btnCards = new List<Button>();
-            //allImages = new ImageList();
             cardImages = new List<ImageList>();
             clicked = new List<Button>();
             timeLeft = 100;
@@ -43,7 +41,6 @@ namespace Concentration
         {
             InitializeComponent();
             btnCards = new List<Button>();
-            //allImages = new ImageList();
             cardImages = new List<ImageList>();
             clicked = new List<Button>();
             timeLeft = 100;
@@ -177,29 +174,10 @@ namespace Concentration
                 cardImages.Add(iL16);
                 cardImages.Add(iL17);
                 cardImages.Add(iL18);
-            }
-            
-            /*if (mode == "hard")
-            {
-               for (int i = 0; i < 18; i++)
-                {
-                    cardImages.Add(new ImageList());
-                    cardImages[i].Images.Add(allImages.Images[0]);
-                    cardImages[i].Images.Add(allImages.Images[i+1]);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    cardImages.Add(new ImageList());
-                    cardImages[i].Images.Add(allImages.Images[0]);
-                    cardImages[i].Images.Add(allImages.Images[i+1]);
-                }
-            }*/  
+            } 
         }
 
-        private void addImagesToBtns()
+        private void addImagesToBtns()  //wont work =(
         {
             Random random = new Random();
             List<int> indexsUsed = new List<int>();
@@ -288,11 +266,14 @@ namespace Concentration
             {
                 Player.AppendNewPlayer(player1);
             }
-            if(!Player.UpdatePlayer(player2))
+            if(player2.Username != "CPU")
             {
-                Player.AppendNewPlayer(player2);
+                if (!Player.UpdatePlayer(player2))
+                {
+                    Player.AppendNewPlayer(player2);
+                }
             }
-
+            
             this.Close();
             HighscoreForm highscoreForm = new HighscoreForm();
             highscoreForm.Show();
@@ -300,7 +281,7 @@ namespace Concentration
 
         private void stripItemExit_Click(object sender, EventArgs e)
         {
-            //add a mbox to ask if sure then
+            MessageBox.Show("Returning to game menu...", "Exiting Game");
             this.Close();
             MenuForm menuForm = new MenuForm();
             menuForm.Show();
@@ -308,19 +289,19 @@ namespace Concentration
 
         private void stripItemRules_Click(object sender, EventArgs e)
         {
-            //need to change
-            MessageBox.Show("Rules");
+            //need to add description of rules
+            MessageBox.Show("", "Game Rules");
         }
 
         private void stripItemPause_Click(object sender, EventArgs e)
         {
             timerTurn.Stop();
-            MessageBox.Show("Game Paused");
+            MessageBox.Show("Game Paused", "Pause");
         }
 
         private void stripItemResume_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Resuming Game");
+            MessageBox.Show("Resuming Game...", "Resume");
             timerTurn.Start();
         }
 
