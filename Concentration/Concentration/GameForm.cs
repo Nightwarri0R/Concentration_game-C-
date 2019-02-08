@@ -43,7 +43,7 @@ namespace Concentration
         {
             InitializeComponent();
             btnCards = new List<Button>();
-            allImages = new ImageList();
+            //allImages = new ImageList();
             cardImages = new List<ImageList>();
             clicked = new List<Button>();
             timeLeft = 100;
@@ -156,7 +156,30 @@ namespace Concentration
 
         private void addImages(string mode)
         {
+            cardImages.Add(iL1);
+            cardImages.Add(iL2);
+            cardImages.Add(iL3);
+            cardImages.Add(iL4);
+            cardImages.Add(iL5);
+            cardImages.Add(iL6);
+            cardImages.Add(iL7);
+            cardImages.Add(iL8);
+            cardImages.Add(iL9);
+
             if (mode == "hard")
+            {
+                cardImages.Add(iL10);
+                cardImages.Add(iL11);
+                cardImages.Add(iL12);
+                cardImages.Add(iL13);
+                cardImages.Add(iL14);
+                cardImages.Add(iL15);
+                cardImages.Add(iL16);
+                cardImages.Add(iL17);
+                cardImages.Add(iL18);
+            }
+            
+            /*if (mode == "hard")
             {
                for (int i = 0; i < 18; i++)
                 {
@@ -173,9 +196,7 @@ namespace Concentration
                     cardImages[i].Images.Add(allImages.Images[0]);
                     cardImages[i].Images.Add(allImages.Images[i+1]);
                 }
-            }
-
-            
+            }*/  
         }
 
         private void addImagesToBtns()

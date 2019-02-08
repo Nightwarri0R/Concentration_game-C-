@@ -40,6 +40,24 @@
             this.timerTurn = new System.Windows.Forms.Timer(this.components);
             this.splitConPlayers = new System.Windows.Forms.SplitContainer();
             this.allImages = new System.Windows.Forms.ImageList(this.components);
+            this.iL1 = new System.Windows.Forms.ImageList(this.components);
+            this.iL2 = new System.Windows.Forms.ImageList(this.components);
+            this.iL3 = new System.Windows.Forms.ImageList(this.components);
+            this.iL4 = new System.Windows.Forms.ImageList(this.components);
+            this.iL5 = new System.Windows.Forms.ImageList(this.components);
+            this.iL6 = new System.Windows.Forms.ImageList(this.components);
+            this.iL7 = new System.Windows.Forms.ImageList(this.components);
+            this.iL8 = new System.Windows.Forms.ImageList(this.components);
+            this.iL9 = new System.Windows.Forms.ImageList(this.components);
+            this.iL10 = new System.Windows.Forms.ImageList(this.components);
+            this.iL11 = new System.Windows.Forms.ImageList(this.components);
+            this.iL12 = new System.Windows.Forms.ImageList(this.components);
+            this.iL13 = new System.Windows.Forms.ImageList(this.components);
+            this.iL14 = new System.Windows.Forms.ImageList(this.components);
+            this.iL15 = new System.Windows.Forms.ImageList(this.components);
+            this.iL16 = new System.Windows.Forms.ImageList(this.components);
+            this.iL17 = new System.Windows.Forms.ImageList(this.components);
+            this.iL18 = new System.Windows.Forms.ImageList(this.components);
             this.menuStripOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitConPlayers)).BeginInit();
             this.splitConPlayers.SuspendLayout();
@@ -137,6 +155,132 @@
             this.allImages.Images.SetKeyName(17, "Tiger.jpg");
             this.allImages.Images.SetKeyName(18, "Zebra.jpg");
             // 
+            // iL1
+            // 
+            this.iL1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL1.ImageStream")));
+            this.iL1.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL1.Images.SetKeyName(0, "card.jpg");
+            this.iL1.Images.SetKeyName(1, "Bear.jpg");
+            // 
+            // iL2
+            // 
+            this.iL2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL2.ImageStream")));
+            this.iL2.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL2.Images.SetKeyName(0, "card.jpg");
+            this.iL2.Images.SetKeyName(1, "Bird.jpg");
+            // 
+            // iL3
+            // 
+            this.iL3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL3.ImageStream")));
+            this.iL3.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL3.Images.SetKeyName(0, "card.jpg");
+            this.iL3.Images.SetKeyName(1, "Bunny.jpg");
+            // 
+            // iL4
+            // 
+            this.iL4.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL4.ImageStream")));
+            this.iL4.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL4.Images.SetKeyName(0, "card.jpg");
+            this.iL4.Images.SetKeyName(1, "Crocodile.jpg");
+            // 
+            // iL5
+            // 
+            this.iL5.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL5.ImageStream")));
+            this.iL5.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL5.Images.SetKeyName(0, "card.jpg");
+            this.iL5.Images.SetKeyName(1, "Dinosaur.jpg");
+            // 
+            // iL6
+            // 
+            this.iL6.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL6.ImageStream")));
+            this.iL6.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL6.Images.SetKeyName(0, "card.jpg");
+            this.iL6.Images.SetKeyName(1, "Dog.jpg");
+            // 
+            // iL7
+            // 
+            this.iL7.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL7.ImageStream")));
+            this.iL7.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL7.Images.SetKeyName(0, "card.jpg");
+            this.iL7.Images.SetKeyName(1, "Dragon.jpg");
+            // 
+            // iL8
+            // 
+            this.iL8.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL8.ImageStream")));
+            this.iL8.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL8.Images.SetKeyName(0, "card.jpg");
+            this.iL8.Images.SetKeyName(1, "Elephant.jpg");
+            // 
+            // iL9
+            // 
+            this.iL9.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL9.ImageStream")));
+            this.iL9.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL9.Images.SetKeyName(0, "card.jpg");
+            this.iL9.Images.SetKeyName(1, "fish.jpg");
+            // 
+            // iL10
+            // 
+            this.iL10.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL10.ImageStream")));
+            this.iL10.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL10.Images.SetKeyName(0, "card.jpg");
+            this.iL10.Images.SetKeyName(1, "Horse.jpg");
+            // 
+            // iL11
+            // 
+            this.iL11.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL11.ImageStream")));
+            this.iL11.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL11.Images.SetKeyName(0, "card.jpg");
+            this.iL11.Images.SetKeyName(1, "Kitty.jpg");
+            // 
+            // iL12
+            // 
+            this.iL12.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL12.ImageStream")));
+            this.iL12.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL12.Images.SetKeyName(0, "card.jpg");
+            this.iL12.Images.SetKeyName(1, "Moose.jpg");
+            // 
+            // iL13
+            // 
+            this.iL13.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL13.ImageStream")));
+            this.iL13.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL13.Images.SetKeyName(0, "card.jpg");
+            this.iL13.Images.SetKeyName(1, "Pig.jpg");
+            // 
+            // iL14
+            // 
+            this.iL14.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL14.ImageStream")));
+            this.iL14.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL14.Images.SetKeyName(0, "card.jpg");
+            this.iL14.Images.SetKeyName(1, "Sheep.jpg");
+            // 
+            // iL15
+            // 
+            this.iL15.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL15.ImageStream")));
+            this.iL15.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL15.Images.SetKeyName(0, "card.jpg");
+            this.iL15.Images.SetKeyName(1, "Snake.jpg");
+            // 
+            // iL16
+            // 
+            this.iL16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL16.ImageStream")));
+            this.iL16.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL16.Images.SetKeyName(0, "card.jpg");
+            this.iL16.Images.SetKeyName(1, "Spider.jpg");
+            // 
+            // iL17
+            // 
+            this.iL17.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL17.ImageStream")));
+            this.iL17.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL17.Images.SetKeyName(0, "card.jpg");
+            this.iL17.Images.SetKeyName(1, "Tiger.jpg");
+            // 
+            // iL18
+            // 
+            this.iL18.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iL18.ImageStream")));
+            this.iL18.TransparentColor = System.Drawing.Color.Transparent;
+            this.iL18.Images.SetKeyName(0, "card.jpg");
+            this.iL18.Images.SetKeyName(1, "Zebra.jpg");
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +316,23 @@
         private System.Windows.Forms.SplitContainer splitConPlayers;
         private System.Windows.Forms.ToolStripMenuItem stripItemResume;
         private System.Windows.Forms.ImageList allImages;
+        private System.Windows.Forms.ImageList iL1;
+        private System.Windows.Forms.ImageList iL2;
+        private System.Windows.Forms.ImageList iL3;
+        private System.Windows.Forms.ImageList iL4;
+        private System.Windows.Forms.ImageList iL5;
+        private System.Windows.Forms.ImageList iL6;
+        private System.Windows.Forms.ImageList iL7;
+        private System.Windows.Forms.ImageList iL8;
+        private System.Windows.Forms.ImageList iL9;
+        private System.Windows.Forms.ImageList iL10;
+        private System.Windows.Forms.ImageList iL11;
+        private System.Windows.Forms.ImageList iL12;
+        private System.Windows.Forms.ImageList iL13;
+        private System.Windows.Forms.ImageList iL14;
+        private System.Windows.Forms.ImageList iL15;
+        private System.Windows.Forms.ImageList iL16;
+        private System.Windows.Forms.ImageList iL17;
+        private System.Windows.Forms.ImageList iL18;
     }
 }
