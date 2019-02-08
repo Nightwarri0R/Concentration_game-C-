@@ -48,11 +48,20 @@ namespace Concentration
             //stores the top 5 players' usernames and scores
             Label[,] lScoreboard = { { lName1, lScore1 }, { lName2, lScore2 }, { lName3, lScore3 }, { lName4, lScore4 }, { lName5, lScore5 } };
             List<Player> allPlayers = Player.ReadFromFile();
+            List<Player> scorePlayers = new List<Player>();
+
+            for(int i = 0; i < allPlayers.Count; i++)
+            {
+                if(allPlayers[i].Username != null && allPlayers[i].ScoresEasy != null && allPlayers[i].ScoresHard != null)
+                {
+                    scorePlayers.Add(allPlayers[i]);
+                }
+            }
 
             if (mode == "easy")
             {
                 //sorts list from highest score to lowest
-                List<Player> sortedEasy = allPlayers.OrderByDescending(player => player.ScoresEasy[0]).ToList();
+                List<Player> sortedEasy = scorePlayers.OrderByDescending(player => player.ScoresEasy[0]).ToList();
                 
                 //populates the label controls
                 for (int i = 0; i < 5; i++)
@@ -64,7 +73,7 @@ namespace Concentration
             else
             {
                 //sorts list from highest score to lowest
-                List<Player> sortedHard = allPlayers.OrderByDescending(player => player.ScoresHard[0]).ToList();
+                List<Player> sortedHard = scorePlayers.OrderByDescending(player => player.ScoresHard[0]).ToList();
                 
                 //populates the label controls
                 for (int i = 0; i < 5; i++)

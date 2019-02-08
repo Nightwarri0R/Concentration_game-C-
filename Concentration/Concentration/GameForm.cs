@@ -401,12 +401,14 @@ namespace Concentration
         //Displays a message explaining how to play Concentration
         private void stripItemRules_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("How to Play Concentration: \n The aim of the game is to find as many pairs of matching" +
+            timerTurn.Stop();
+            MessageBox.Show("How to Play Concentration: \nThe aim of the game is to find as many pairs of matching" +
                 " cards as possible. In easy mode there are 18 cards, i.e. 9 pairs to find, while in hard mode there" +
-                " are 36 cards, i.e. 18 pairs to find. \n Players take turns to select 2 cards which will be turned over" +
+                " are 36 cards, i.e. 18 pairs to find. \n \nPlayers take turns to select 2 cards which will be turned over" +
                 " to reveal a hidden colour. If the revealed colours match the player will gain points and will get another" +
                 " turn immediately. If the cards aren't a pair, the colours will be hidden again and the turn will pass to the" +
-                " next player. \n The game ends when all pairs have been found.", "Game Rules");
+                " next player. \n \nThe game ends when all pairs have been found.", "Game Rules");
+            timerTurn.Start();
         }
 
         //Allows the player to pause their turn by stopping the timer

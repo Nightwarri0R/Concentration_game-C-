@@ -49,8 +49,8 @@ namespace Concentration
         {
             this.username = username;
             score = 0;
-            scoresEasy = new List<int>();
-            scoresHard = new List<int>();
+            scoresEasy = new List<int> { 0 };
+            scoresHard = new List<int> { 0 };
         }
 
         //Appends new players to the end of the PlayerDetails file
@@ -114,7 +114,7 @@ namespace Concentration
             Stream sr;
             try
             {
-                sr = File.Open("PlayerDetails.bin", FileMode.Open, FileAccess.ReadWrite);
+                sr = File.Open("PlayerDetails.bin", FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 BinaryFormatter bf = new BinaryFormatter();
                 try
                 {
