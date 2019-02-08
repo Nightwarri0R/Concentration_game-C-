@@ -114,7 +114,7 @@
             this.panelPlayer.Controls.Add(this.lPlayer2);
             this.panelPlayer.Controls.Add(this.lPlayer1);
             this.panelPlayer.Controls.Add(this.lEnterName);
-            this.panelPlayer.Location = new System.Drawing.Point(259, 122);
+            this.panelPlayer.Location = new System.Drawing.Point(56, 64);
             this.panelPlayer.Name = "panelPlayer";
             this.panelPlayer.Size = new System.Drawing.Size(393, 248);
             this.panelPlayer.TabIndex = 6;

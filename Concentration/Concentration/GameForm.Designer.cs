@@ -39,6 +39,7 @@
             this.pBarTimeLeft = new System.Windows.Forms.ProgressBar();
             this.timerTurn = new System.Windows.Forms.Timer(this.components);
             this.splitConPlayers = new System.Windows.Forms.SplitContainer();
+            this.allImages = new System.Windows.Forms.ImageList(this.components);
             this.menuStripOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitConPlayers)).BeginInit();
             this.splitConPlayers.SuspendLayout();
@@ -112,6 +113,30 @@
             this.splitConPlayers.SplitterDistance = 209;
             this.splitConPlayers.TabIndex = 3;
             // 
+            // allImages
+            // 
+            this.allImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("allImages.ImageStream")));
+            this.allImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.allImages.Images.SetKeyName(0, "card.jpg");
+            this.allImages.Images.SetKeyName(1, "Bear.jpg");
+            this.allImages.Images.SetKeyName(2, "Bird.jpg");
+            this.allImages.Images.SetKeyName(3, "Bunny.jpg");
+            this.allImages.Images.SetKeyName(4, "Crocodile.jpg");
+            this.allImages.Images.SetKeyName(5, "Dinosaur.jpg");
+            this.allImages.Images.SetKeyName(6, "Dog.jpg");
+            this.allImages.Images.SetKeyName(7, "Dragon.jpg");
+            this.allImages.Images.SetKeyName(8, "Elephant.jpg");
+            this.allImages.Images.SetKeyName(9, "fish.jpg");
+            this.allImages.Images.SetKeyName(10, "Horse.jpg");
+            this.allImages.Images.SetKeyName(11, "Kitty.jpg");
+            this.allImages.Images.SetKeyName(12, "Moose.jpg");
+            this.allImages.Images.SetKeyName(13, "Pig.jpg");
+            this.allImages.Images.SetKeyName(14, "Sheep.jpg");
+            this.allImages.Images.SetKeyName(15, "Snake.jpg");
+            this.allImages.Images.SetKeyName(16, "Spider.jpg");
+            this.allImages.Images.SetKeyName(17, "Tiger.jpg");
+            this.allImages.Images.SetKeyName(18, "Zebra.jpg");
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,5 +171,6 @@
         private System.Windows.Forms.Timer timerTurn;
         private System.Windows.Forms.SplitContainer splitConPlayers;
         private System.Windows.Forms.ToolStripMenuItem stripItemResume;
+        private System.Windows.Forms.ImageList allImages;
     }
 }

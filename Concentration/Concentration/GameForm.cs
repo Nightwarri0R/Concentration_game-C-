@@ -14,7 +14,7 @@ namespace Concentration
     {
 
         private List<Button> btnCards; //either 18 or 36
-        private ImageList allImages; //either 10 or 19
+        //private ImageList allImages; //either 10 or 19
         private List<ImageList> cardImages; //either 9 or 18
         private int timeLeft;
         private int turn;
@@ -27,7 +27,7 @@ namespace Concentration
         {
             InitializeComponent();
             btnCards = new List<Button>();
-            allImages = new ImageList();
+            //allImages = new ImageList();
             cardImages = new List<ImageList>();
             clicked = new List<Button>();
             timeLeft = 100;
@@ -154,48 +154,24 @@ namespace Concentration
             }
         }
 
-        private void addImages(string mode) //need to test that card is 0
+        private void addImages(string mode)
         {
-            allImages.Images.Add("Card", (Image)Properties.Resources.ResourceManager.GetObject("Card.jpg"));
-            allImages.Images.Add("Bear", (Image)Properties.Resources.ResourceManager.GetObject("Bear.jpg"));
-            allImages.Images.Add("Bird", (Image)Properties.Resources.ResourceManager.GetObject("Bird.jpg"));
-            allImages.Images.Add("Bunny", (Image)Properties.Resources.ResourceManager.GetObject("Bunny.jpg"));
-            allImages.Images.Add("Crocodile", (Image)Properties.Resources.ResourceManager.GetObject("Crocodile.jpg"));
-            allImages.Images.Add("Dinosaur", (Image)Properties.Resources.ResourceManager.GetObject("Dinosaur.jpg"));
-            allImages.Images.Add("Dog", (Image)Properties.Resources.ResourceManager.GetObject("Dog.jpg"));
-            allImages.Images.Add("Dragon", (Image)Properties.Resources.ResourceManager.GetObject("Dragon.jpg"));
-            allImages.Images.Add("Elephant", (Image)Properties.Resources.ResourceManager.GetObject("Elephant.jpg"));
-            allImages.Images.Add("Fish", (Image)Properties.Resources.ResourceManager.GetObject("Fish.jpg"));
-            //add all images to imagelist
-            //0 will be background which all cards will be set to
-            
             if (mode == "hard")
             {
-                //add rest of images ie 9 more
-                allImages.Images.Add("Horse", (Image)Properties.Resources.ResourceManager.GetObject("Horse.jpg"));
-                allImages.Images.Add("Kitty", (Image)Properties.Resources.ResourceManager.GetObject("Kitty.jpg"));
-                allImages.Images.Add("Moose", (Image)Properties.Resources.ResourceManager.GetObject("Moose.jpg"));
-                allImages.Images.Add("Pig", (Image)Properties.Resources.ResourceManager.GetObject("Pig.jpg"));
-                allImages.Images.Add("Sheep", (Image)Properties.Resources.ResourceManager.GetObject("Sheep.jpg"));
-                allImages.Images.Add("Snake", (Image)Properties.Resources.ResourceManager.GetObject("Snake.jpg"));
-                allImages.Images.Add("Spider", (Image)Properties.Resources.ResourceManager.GetObject("Spider.jpg"));
-                allImages.Images.Add("Tiger", (Image)Properties.Resources.ResourceManager.GetObject("Tiger.jpg"));
-                allImages.Images.Add("Zebra", (Image)Properties.Resources.ResourceManager.GetObject("Zebra.jpg"));
-
-                for (int i = 1; i < 19; i++)
+               for (int i = 0; i < 18; i++)
                 {
                     cardImages.Add(new ImageList());
-                    cardImages[i].Images.Add(allImages.Images["card"]);
-                    cardImages[i].Images.Add(allImages.Images[i]);
+                    cardImages[i].Images.Add(allImages.Images[0]);
+                    cardImages[i].Images.Add(allImages.Images[i+1]);
                 }
             }
             else
             {
-                for (int i = 1; i < 10; i++)
+                for (int i = 0; i < 9; i++)
                 {
                     cardImages.Add(new ImageList());
-                    cardImages[i].Images.Add(allImages.Images["card"]);
-                    cardImages[i].Images.Add(allImages.Images[i]);
+                    cardImages[i].Images.Add(allImages.Images[0]);
+                    cardImages[i].Images.Add(allImages.Images[i+1]);
                 }
             }
 
