@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO; //dont know if needed
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
 namespace Concentration
 {
+    /*Team 6:
+    * Nicole Orr   170010591
+    * Aylin Ibryamov   170017397
+    */
+
     [Serializable]
     public class Player
     {
 
         private string username;
-        private int score;
-        private List<int> scoresEasy;
-        private List<int> scoresHard;
+        private int score;  //stores the player's current score
+        private List<int> scoresEasy;   //stores the player's previous scores on easy mode
+        private List<int> scoresHard;   //stores the player's previous scores on hard mode
 
         public string Username
         {
@@ -39,6 +44,7 @@ namespace Concentration
             set { scoresHard = value; }
         }
 
+        //Player constructor
         public Player(string username)
         {
             this.username = username;
@@ -47,8 +53,8 @@ namespace Concentration
             scoresHard = new List<int>();
         }
 
-        //need to test/change code below
-        //need to change for two score lists etc
+        //Appends new players to the end of the PlayerDetails file
+        //Method is public static to enable use within the forms
         public static void AppendNewPlayer(Player player)
         {
             Stream sw;
@@ -66,6 +72,8 @@ namespace Concentration
             }
         }
 
+        //Reads in all players stored in the PlayerDetails file, stores them in a list of Players and returns the list
+        //Method is public static to enable use within the forms
         public static List<Player> ReadFromFile()
         {
             Stream sr;
@@ -95,6 +103,8 @@ namespace Concentration
             return players;
         }
 
+        //Updates the scores of existing Players stored in the PlayerDetails file
+        //Method is public static to enable use within the forms
         public static bool UpdatePlayer(Player player)
         {
             long pos = -1;
@@ -112,7 +122,7 @@ namespace Concentration
                     {
                         pos = sr.Position;
                         readPlayer = (Player)bf.Deserialize(sr);
-                        if (readPlayer.Username == null) // catches nulls so an exception wont be thrown//
+                        if (readPlayer.Username == null) //removes null player objects
                         {
                             comparison = 1;
                         }
@@ -124,7 +134,7 @@ namespace Concentration
                         if (comparison == 0)
                         {
                             found = true;
-                            // updates scores below//
+                            //updates player's scores
                             readPlayer.ScoresEasy = player.ScoresEasy;
                             readPlayer.ScoresHard = player.ScoresHard;
                             sr.Seek(pos, SeekOrigin.Begin);

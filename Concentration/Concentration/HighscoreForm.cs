@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace Concentration
 {
+    /*Team 6:
+     * Nicole Orr   170010591
+     * Aylin Ibryamov   170017397
+     */
+
     public partial class HighscoreForm : Form
     {
         public HighscoreForm()
@@ -17,6 +22,7 @@ namespace Concentration
             InitializeComponent();
         }
 
+        //Allows the user to return to the MenuForm
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -24,24 +30,31 @@ namespace Concentration
             menuForm.Show();
         }
 
+        //Displays the top 5 scores by players on easy mode
         private void btnEasy_Click(object sender, EventArgs e)
         {
             displayScores("easy");
         }
 
+        //Displays the top 5 scores by players on hard mode
         private void btnHard_Click(object sender, EventArgs e)
         {
             displayScores("hard");
         }
 
+        //Displays the top 5 scores per mode by sorting the lists of scores and populating the label controls contained in the tLPScores
         private void displayScores(string mode)
         {
+            //stores the top 5 players' usernames and scores
             Label[,] lScoreboard = { { lName1, lScore1 }, { lName2, lScore2 }, { lName3, lScore3 }, { lName4, lScore4 }, { lName5, lScore5 } };
             List<Player> allPlayers = Player.ReadFromFile();
 
             if (mode == "easy")
             {
+                //sorts list from highest score to lowest
                 List<Player> sortedEasy = allPlayers.OrderByDescending(player => player.ScoresEasy[0]).ToList();
+                
+                //populates the label controls
                 for (int i = 0; i < 5; i++)
                 {
                     lScoreboard[i, 0].Text = sortedEasy[i].Username;
@@ -50,7 +63,10 @@ namespace Concentration
             }
             else
             {
+                //sorts list from highest score to lowest
                 List<Player> sortedHard = allPlayers.OrderByDescending(player => player.ScoresHard[0]).ToList();
+                
+                //populates the label controls
                 for (int i = 0; i < 5; i++)
                 {
                     lScoreboard[i, 0].Text = sortedHard[i].Username;
