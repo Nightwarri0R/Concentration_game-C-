@@ -19,7 +19,7 @@ namespace Concentration
     {
 
         private List<Button> btnCards; //stores the Buttons to be used in the grid, either 18 or 36 total
-        private List<ImageList> cardImages; //stores the ImageLists to be used by the Buttons, either 9 or 18 total
+        private List<Color> cardColors; //stores the Colors to be used by the Buttons, either 18 or 36 total
         private int timeForTurn;   //stores an int representing the amount of time a player has to take their turn
         private int turn;   //stores an int representing the player whose turn it is, i.e. 1 or 2
         private Player player1; //stores the player 1 object
@@ -33,14 +33,14 @@ namespace Concentration
             InitializeComponent();
             //initializes the global variables for GameForm
             btnCards = new List<Button>();
-            cardImages = new List<ImageList>();
+            cardColors = new List<Color>();
             clicked = new List<Button>();
             timeForTurn = 100;
             turn = 1;
             pairsFound = 0;
 
             //sets up the game's grid and players
-            addImages(mode);
+            addColors(mode);
             makeGame(numOfPlayers, mode);
             setPlayer(username1);
 
@@ -57,14 +57,14 @@ namespace Concentration
             InitializeComponent();
             //initializes the global variables for GameForm
             btnCards = new List<Button>();
-            cardImages = new List<ImageList>();
+            cardColors = new List<Color>();
             clicked = new List<Button>();
             timeForTurn = 100;
             turn = 1;
             pairsFound = 0;
 
             //sets up the game's grid and players
-            addImages(mode);
+            addColors(mode);
             makeGame(numOfPlayers, mode);
             setPlayer(username1, username2);
 
@@ -79,12 +79,12 @@ namespace Concentration
         void btnEvent_Click(object sender, EventArgs e)
         {
             clicked.Add((Button)sender);    //adds the Button that was just clicked to the list
-            clicked[clicked.Count() - 1].ImageIndex = 1;    //shows the hidden image of the Button that was just clicked
+            clicked[clicked.Count() - 1].BackColor = clicked[clicked.Count() - 1].ForeColor;    //shows the hidden image of the Button that was just clicked
 
             if (clicked.Count() == 2)   //if a player has selected 2 Buttons
             {
                 timerTurn.Stop();
-                if (clicked[0].ImageKey == clicked[1].ImageKey)  //checks if its a pair by comparing the image keys
+                if (clicked[0].ForeColor == clicked[1].ForeColor)  //checks if its a pair by comparing the image keys
                 {
                     //increases and updates the player's score
                     if(turn == 1)
@@ -99,7 +99,7 @@ namespace Concentration
                     }
                     MessageBox.Show("A pair was found!", "Pair Found");
                     pairsFound += 1;
-                    if(pairsFound == cardImages.Count)  //if all pairs have been found
+                    if(pairsFound == btnCards.Count / 2)  //if all pairs have been found
                     {
                         endOfGame();
                     }
@@ -116,9 +116,9 @@ namespace Concentration
                 }
                 else    //if it isn't a pair
                 {
-                    //hides the second images again
-                    clicked[0].ImageIndex = 0;
-                    clicked[1].ImageIndex = 0;
+                    //hides the background colour again
+                    clicked[0].BackColor = Color.Gray;
+                    clicked[1].BackColor = Color.Gray;
 
                     //change player turn
                     pBarTimeLeft.Value = timeForTurn;
@@ -156,19 +156,19 @@ namespace Concentration
                 index2 = random.Next(0, btnCards.Count);
             }
             while (index1 == index2);
-            
+
             //selects 2 random Buttons from the grid using the generated indexes
-            btnCards[index1].ImageIndex = 1;
-            btnCards[index2].ImageIndex = 1;
+            btnCards[index1].BackColor = btnCards[index1].ForeColor;
+            btnCards[index2].BackColor = btnCards[index2].ForeColor;
             timerTurn.Stop();
-            if(btnCards[index1].ImageKey == btnCards[index2].ImageKey)  //checks if its a pair by comparing the image keys
+            if(btnCards[index1].ForeColor == btnCards[index2].ForeColor)  //checks if its a pair by comparing the Buttons' ForeColors
             {
                 //increases and updates the player's score
                 player2.Score += 10;
                 lScore2.Text = player2.Score.ToString();
                 MessageBox.Show("A pair was found!", "Pair Found");
                 pairsFound += 1;
-                if (pairsFound == cardImages.Count) //if all pairs have been found
+                if (pairsFound == btnCards.Count/2) //if all pairs have been found
                 {
                     endOfGame();
                 }
@@ -181,9 +181,9 @@ namespace Concentration
             }
             else    //if it isn't a pair
             {
-                //hides the second images again
-                btnCards[index1].ImageIndex = 0;
-                btnCards[index2].ImageIndex = 0;
+                //hides the background colour again
+                btnCards[index1].BackColor = Color.Gray;
+                btnCards[index2].BackColor = Color.Gray;
 
                 //change player turn
                 turn = 1;
@@ -255,56 +255,50 @@ namespace Concentration
             }
         }
 
-        //Adds the relevant ImageLists into the list cardImages
-        private void addImages(string mode)
+        //Adds Colors into the list cardColors
+        private void addColors(string mode)
         {
-            cardImages.Add(iL1);
-            cardImages.Add(iL2);
-            cardImages.Add(iL3);
-            cardImages.Add(iL4);
-            cardImages.Add(iL5);
-            cardImages.Add(iL6);
-            cardImages.Add(iL7);
-            cardImages.Add(iL8);
-            cardImages.Add(iL9);
-
+            for(int i = 0; i < 2; i++)
+            {
+                cardColors.Add(Color.Maroon);
+                cardColors.Add(Color.OrangeRed);
+                cardColors.Add(Color.Gold);
+                cardColors.Add(Color.ForestGreen);
+                cardColors.Add(Color.Turquoise);
+                cardColors.Add(Color.MidnightBlue);
+                cardColors.Add(Color.Indigo);
+                cardColors.Add(Color.DeepPink);
+                cardColors.Add(Color.White);
+            }
+            
             if (mode == "hard")
             {
-                //adds the remaining ImageLists
-                cardImages.Add(iL10);
-                cardImages.Add(iL11);
-                cardImages.Add(iL12);
-                cardImages.Add(iL13);
-                cardImages.Add(iL14);
-                cardImages.Add(iL15);
-                cardImages.Add(iL16);
-                cardImages.Add(iL17);
-                cardImages.Add(iL18);
+                for (int i = 0; i < 2; i++)
+                {
+                    cardColors.Add(Color.Crimson);
+                    cardColors.Add(Color.Brown);
+                    cardColors.Add(Color.GreenYellow);
+                    cardColors.Add(Color.LawnGreen);
+                    cardColors.Add(Color.Aqua);
+                    cardColors.Add(Color.SkyBlue);
+                    cardColors.Add(Color.Purple);
+                    cardColors.Add(Color.Magenta);
+                    cardColors.Add(Color.BlueViolet);
+                }
             } 
         }
 
-        //Randomly assigns each ImageList in cardImages to 2 Buttons
-        private void addImagesToBtns()  //wont work =(
+        //Randomly assigns each Button in btnCards a background color
+        private void addColorsToBtns()
         {
-            /*Random random = new Random();
-            List<int> indexsUsed = new List<int>();
-            int num1, num2;
-            foreach (ImageList i in cardImages)
+            Random random = new Random();
+            int index;
+            foreach (Button btn in btnCards)
             {
-                do
-                {
-                    num1 = random.Next(1, btnCards.Count);
-                    num2 = random.Next(1, btnCards.Count);
-                }
-                while (num1 == num2 || indexsUsed.Contains(num1) || indexsUsed.Contains(num2));
-
-                btnCards[num1].ImageList = i;
-                btnCards[num2].ImageList = i;
-                indexsUsed.Add(num1);
-                indexsUsed.Add(num2);
-            }*/
-
-
+                index = random.Next(0, cardColors.Count);
+                btn.ForeColor = cardColors[index];
+                cardColors.RemoveAt(index);
+            }
         }
 
         //Sets up and populates the grid of Buttons for the game
@@ -315,8 +309,9 @@ namespace Concentration
                 for(int i = 0; i < 18; i++)
                 {
                     btnCards.Add(new Button());
-                    //btnCards[i]
-                    //set size etc?
+                    btnCards[i].Height = 60;
+                    btnCards[i].Width = 60;
+                    btnCards[i].BackColor = Color.Gray;
                     btnCards[i].Click += new EventHandler(this.btnEvent_Click);
                     fLPCards.Controls.Add(btnCards[i]);
                 }
@@ -327,13 +322,14 @@ namespace Concentration
                 for (int i = 0; i < 36; i++)
                 {
                     btnCards.Add(new Button());
-                    //btnCards[i]
-                    //set size etc?
+                    btnCards[i].Height = 40;
+                    btnCards[i].Width = 40;
+                    btnCards[i].BackColor = Color.Gray;
                     btnCards[i].Click += new EventHandler(this.btnEvent_Click);
                     fLPCards.Controls.Add(btnCards[i]);
                 }
             }
-            addImagesToBtns();
+            addColorsToBtns();
         }
 
         //Manages the end of the game by updating players' scores and saving them to file
@@ -353,7 +349,7 @@ namespace Concentration
             }
 
             //Update the players' scores
-            if(cardImages.Count() == 9) //i.e. if playing in easy mode
+            if(btnCards.Count() == 18) //i.e. if playing in easy mode
             {
                 player1.ScoresEasy.Add(player1.Score);
                 player1.Score = 0;
@@ -408,8 +404,8 @@ namespace Concentration
             MessageBox.Show("How to Play Concentration: \n The aim of the game is to find as many pairs of matching" +
                 " cards as possible. In easy mode there are 18 cards, i.e. 9 pairs to find, while in hard mode there" +
                 " are 36 cards, i.e. 18 pairs to find. \n Players take turns to select 2 cards which will be turned over" +
-                " to reveal a hidden image. If the revealed images match the player will gain points and will get another" +
-                " turn immediately. If the cards aren't a pair, the images will be hidden again and the turn will pass to the" +
+                " to reveal a hidden colour. If the revealed colours match the player will gain points and will get another" +
+                " turn immediately. If the cards aren't a pair, the colours will be hidden again and the turn will pass to the" +
                 " next player. \n The game ends when all pairs have been found.", "Game Rules");
         }
 
@@ -430,41 +426,45 @@ namespace Concentration
         //TimerTurn event used to limit the time a player has to take their turn
         private void timerTurn_Tick(object sender, EventArgs e)
         {
-            if(pBarTimeLeft.Value < 40)
+            if(pBarTimeLeft.Value <= 0) //if the player's turn is up
             {
-                if(pBarTimeLeft.Value <= 0) //if the player's turn is up
+                timerTurn.Stop();
+                MessageBox.Show("You have ran out of time.", "Out of time!");
+                if(clicked.Count > 0)   //if the player has clicked a button
                 {
-                    timerTurn.Stop();
-                    MessageBox.Show("You have ran out of time.", "Out of time!");
-                    if(clicked.Count > 0)   //if the player has clicked a button
-                    {
                         clicked[0].ImageIndex = 0;
                         clicked.Clear();
-                    }
-                    //change player turn
-                    pBarTimeLeft.Value = timeForTurn;
-                    if (turn == 1)
+                }
+                //change player turn
+                pBarTimeLeft.Value = timeForTurn;
+                if (turn == 1)
+                {
+                    turn = 2;
+                    MessageBox.Show(player2.Username + "'s turn", "Next Turn");
+                    timerTurn.Start();
+                    if (player2.Username == "CPU")
                     {
-                        turn = 2;
-                        MessageBox.Show(player2.Username + "'s turn", "Next Turn");
-                        timerTurn.Start();
-                        if (player2.Username == "CPU")
-                        {
-                            cpuTurn();
-                        }
-                    }
-                    else
-                    {
-                        turn = 1;
-                        MessageBox.Show(player1.Username + "'s turn", "Next Turn");
-                        timerTurn.Start();
+                        cpuTurn();
                     }
                 }
-                //change ProgressBar colour to show player's turn is almost over
-                pBarTimeLeft.ForeColor = Color.Crimson;
+                else
+                {
+                    turn = 1;
+                    MessageBox.Show(player1.Username + "'s turn", "Next Turn");
+                    timerTurn.Start();
+                }
             }
-            //decrement ProgressBar
-            pBarTimeLeft.Value -= 3;
+            else
+            {
+                //decrement ProgressBar
+                pBarTimeLeft.Value -= 4;
+            }
+            if (pBarTimeLeft.Value <= 40)
+            {
+                //change ProgressBar colour to show player's turn is almost over
+                pBarTimeLeft.BackColor = Color.Crimson;
+            }
+            
         }
         
     }
