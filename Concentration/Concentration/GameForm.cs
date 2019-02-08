@@ -20,7 +20,7 @@ namespace Concentration
 
         private List<Button> btnCards; //stores the Buttons to be used in the grid, either 18 or 36 total
         private List<ImageList> cardImages; //stores the ImageLists to be used by the Buttons, either 9 or 18 total
-        private int timeLeft;   //stores an int representing the amount of time left in a player's turn
+        private int timeForTurn;   //stores an int representing the amount of time a player has to take their turn
         private int turn;   //stores an int representing the player whose turn it is, i.e. 1 or 2
         private Player player1; //stores the player 1 object
         private Player player2; //stores the player 2 object
@@ -35,7 +35,7 @@ namespace Concentration
             btnCards = new List<Button>();
             cardImages = new List<ImageList>();
             clicked = new List<Button>();
-            timeLeft = 30;
+            timeForTurn = 100;
             turn = 1;
             pairsFound = 0;
 
@@ -43,6 +43,12 @@ namespace Concentration
             addImages(mode);
             makeGame(numOfPlayers, mode);
             setPlayer(username1);
+
+            //Sets up and starts the turn timer
+            pBarTimeLeft.Value = timeForTurn;
+            timerTurn.Interval = 1000;
+            timerTurn.Start();
+            timerTurn.Tick += timerTurn_Tick;
         }
 
         //GameForm constructor for 2 player mode
@@ -53,7 +59,7 @@ namespace Concentration
             btnCards = new List<Button>();
             cardImages = new List<ImageList>();
             clicked = new List<Button>();
-            timeLeft = 30;
+            timeForTurn = 100;
             turn = 1;
             pairsFound = 0;
 
@@ -61,6 +67,12 @@ namespace Concentration
             addImages(mode);
             makeGame(numOfPlayers, mode);
             setPlayer(username1, username2);
+
+            //Sets up and starts the turn timer
+            pBarTimeLeft.Value = timeForTurn;
+            timerTurn.Interval = 1000;
+            timerTurn.Start();
+            timerTurn.Tick += timerTurn_Tick;
         }
 
         //Common event handler for the grid of Buttons
@@ -71,7 +83,8 @@ namespace Concentration
 
             if (clicked.Count() == 2)   //if a player has selected 2 Buttons
             {
-                if(clicked[0].ImageKey == clicked[1].ImageKey)  //checks if its a pair by comparing the image keys
+                timerTurn.Stop();
+                if (clicked[0].ImageKey == clicked[1].ImageKey)  //checks if its a pair by comparing the image keys
                 {
                     //increases and updates the player's score
                     if(turn == 1)
@@ -92,7 +105,9 @@ namespace Concentration
                     }
                     else
                     {
-                        if(turn == 2 && player2.Username == "CPU")
+                        pBarTimeLeft.Value = timeForTurn;
+                        timerTurn.Start();
+                        if (turn == 2 && player2.Username == "CPU")
                         {
                             cpuTurn();
                         }
@@ -101,11 +116,17 @@ namespace Concentration
                 }
                 else    //if it isn't a pair
                 {
+                    //hides the second images again
+                    clicked[0].ImageIndex = 0;
+                    clicked[1].ImageIndex = 0;
+
                     //change player turn
+                    pBarTimeLeft.Value = timeForTurn;
                     if (turn == 1)
                     {
                         turn = 2;
                         MessageBox.Show(player2.Username + "'s turn", "Next Turn");
+                        timerTurn.Start();
                         if (player2.Username == "CPU")
                         {
                             cpuTurn();
@@ -115,10 +136,8 @@ namespace Concentration
                     {
                         turn = 1;
                         MessageBox.Show(player1.Username + "'s turn", "Next Turn");
+                        timerTurn.Start();
                     }
-                    //hides the second images again
-                    clicked[0].ImageIndex = 0;
-                    clicked[1].ImageIndex = 0;
                 }
                 clicked.Clear();    //empties the list so it can be reused for the next turn
             }
@@ -141,6 +160,7 @@ namespace Concentration
             //selects 2 random Buttons from the grid using the generated indexes
             btnCards[index1].ImageIndex = 1;
             btnCards[index2].ImageIndex = 1;
+            timerTurn.Stop();
             if(btnCards[index1].ImageKey == btnCards[index2].ImageKey)  //checks if its a pair by comparing the image keys
             {
                 //increases and updates the player's score
@@ -154,6 +174,8 @@ namespace Concentration
                 }
                 else
                 {
+                    pBarTimeLeft.Value = timeForTurn;
+                    timerTurn.Start();
                     cpuTurn();
                 }
             }
@@ -166,6 +188,8 @@ namespace Concentration
                 //change player turn
                 turn = 1;
                 MessageBox.Show(player1.Username + "'s turn", "Next Turn");
+                pBarTimeLeft.Value = timeForTurn;
+                timerTurn.Start();
             }
         }
 
@@ -403,36 +427,45 @@ namespace Concentration
             timerTurn.Start();
         }
 
+        //TimerTurn event used to limit the time a player has to take their turn
         private void timerTurn_Tick(object sender, EventArgs e)
         {
-            //check if below point then change colour
-            //check if 0 then change turn
-            //need some way to track turns etc
+            if(pBarTimeLeft.Value < 40)
+            {
+                if(pBarTimeLeft.Value <= 0) //if the player's turn is up
+                {
+                    timerTurn.Stop();
+                    MessageBox.Show("You have ran out of time.", "Out of time!");
+                    if(clicked.Count > 0)   //if the player has clicked a button
+                    {
+                        clicked[0].ImageIndex = 0;
+                        clicked.Clear();
+                    }
+                    //change player turn
+                    pBarTimeLeft.Value = timeForTurn;
+                    if (turn == 1)
+                    {
+                        turn = 2;
+                        MessageBox.Show(player2.Username + "'s turn", "Next Turn");
+                        timerTurn.Start();
+                        if (player2.Username == "CPU")
+                        {
+                            cpuTurn();
+                        }
+                    }
+                    else
+                    {
+                        turn = 1;
+                        MessageBox.Show(player1.Username + "'s turn", "Next Turn");
+                        timerTurn.Start();
+                    }
+                }
+                //change ProgressBar colour to show player's turn is almost over
+                pBarTimeLeft.ForeColor = Color.Crimson;
+            }
+            //decrement ProgressBar
+            pBarTimeLeft.Value -= 3;
         }
-
-        /*progressBar1.Value = timeLeft;
-          timer1.Interval = 1000;
-          timer1.Start();
-          timer1.Tick += timer1_Tick;*/
-
-        /*private void timer1_Tick(object sender, EventArgs e)
-        {
-           if (progressBar1.Value <= 40)
-            {
-                progressBar1.ForeColor = Color.Crimson;
-            }
-            if (progressBar1.Value <= 0)
-            {
-                timer1.Stop();
-                MessageBox.Show("You have ran out of time.", "Out of time!");
-                
-            }
-            else
-            {
-                progressBar1.Value -= 2;
-            }
-        }*/
-
-
+        
     }
 }
